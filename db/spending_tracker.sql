@@ -11,10 +11,11 @@ CREATE TABLE transactions (
 
 CREATE TABLE tags (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255)
+    category VARCHAR(255)
 );
 
 CREATE TABLE merchants (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255)
+    name VARCHAR(255),
+    tag VARCHAR REFERENCES tags (id) ON DELETE CASCADE
 );
