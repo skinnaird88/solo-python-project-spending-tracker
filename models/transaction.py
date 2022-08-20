@@ -1,5 +1,3 @@
-from msilib.schema import Class
-
 class Transaction:
 
     def __init__(self, description, type, amount):
