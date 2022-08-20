@@ -9,9 +9,16 @@ import repositories.transaction_repository as transaction_repository
 import repositories.tag_repository as tag_repository
 
 def create(transaction):
+    # transactions = []
+
     sql = """
-    INSERT INTO transactions ( name, type, amount, merchant ) VALUES ( %s, %s, %s, %s ) returning id"""
-    values = [transaction.description, transaction.type, transaction.amount, transaction.merchant]
+    INSERT INTO transactions ( name ) VALUES ( %s, %s, %s, %s ) returning *"""
+    values = [transaction.description]
+    # removed transaction.type, transaction.amount, transaction.merchant] ^^^^
     results = run_sql(sql, values)
-    transaction.id = results[0]['id']
+    transaction.id = results
     return transaction
+
+def delete_all():
+    sql = "DELETE FROM transactions"
+    run_sql(sql)
