@@ -12,7 +12,7 @@ def create(transaction):
     # transactions = []
 
     sql = """
-    INSERT INTO transactions ( name ) VALUES ( %s, %s, %s, %s ) returning *"""
+    INSERT INTO transactions ( name ) VALUES ( %s ) returning *"""
     values = [transaction.description]
     # removed transaction.type, transaction.amount, transaction.merchant] ^^^^
     results = run_sql(sql, values)

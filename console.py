@@ -18,7 +18,7 @@ tags = [tag1, tag2]
 
 merchant1 = Merchant("Tesco", "groceries")
 merchant2 = Merchant("Shell", "motor")
-merchant_repository.create(merchant1)
+# merchant_repository.create(merchant1)
 
 merchants = [merchant1, merchant2]
 
