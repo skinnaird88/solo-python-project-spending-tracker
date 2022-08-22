@@ -6,7 +6,8 @@ CREATE TABLE transactions (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     type VARCHAR(255),
-    amount INT
+    amount INT,
+    merchant VARCHAR(255)
 );
 
 CREATE TABLE tags (

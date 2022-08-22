@@ -1,4 +1,5 @@
 import pdb
+from unicodedata import name
 from models.transaction import Transaction
 from models.tag import Tag
 from models.merchant import Merchant
@@ -22,11 +23,11 @@ merchant2 = Merchant("Shell", "motor")
 
 merchants = [merchant1, merchant2]
 
-transaction1 = Transaction("Chocolate", tag1, 1, merchant1)
+transaction1 = Transaction("Chocolate", "groceries", 1, "Tesco")
 transaction2 = Transaction("Unleaded fuel", tag2, 50, merchant2)
 
 transaction_repository.create(transaction1)
 
 transactions = [transaction1, transaction2]
 
-pdb.set_trace()
+# pdb.set_trace()

@@ -12,12 +12,12 @@ def create(transaction):
     # transactions = []
 
     sql = """
-    INSERT INTO transactions ( name ) VALUES ( %s ) returning *"""
-    values = [transaction.description]
+    INSERT INTO transactions ( name, type, amount, merchant ) VALUES ( %s, %s, %s, %s ) returning *"""
+    values = [transaction.description, transaction.type, transaction.amount, transaction.merchant]
     # removed transaction.type, transaction.amount, transaction.merchant] ^^^^
     results = run_sql(sql, values)
     transaction.id = results
-    return transaction
+    return
 
 def delete_all():
     sql = "DELETE FROM transactions"
