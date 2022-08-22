@@ -14,7 +14,7 @@ def create(merchant):
     return merchant
 
 def select_all():
-    merchants = []
+    the_merchants = []
     sql = "SELECT * from merchants"
     the_merchants = run_sql(sql)
     for row in the_merchants:

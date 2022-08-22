@@ -11,6 +11,15 @@ def create(tag):
     tag.id = results[0]['id']
     return tag
 
+def select_all():
+    the_tags = []
+    sql = "SELECT * from tags"
+    the_tags = run_sql(sql)
+    for row in the_tags:
+        tag = Merchant[row['name']]
+        the_tags.append(tag)
+    return the_tags
+
 def delete_all():
     sql = "DELETE FROM tags"
     run_sql(sql)
