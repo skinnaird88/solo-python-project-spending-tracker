@@ -15,6 +15,8 @@ transaction_repository.delete_all()
 tag1 = Tag("groceries")
 tag2 = Tag("motor")
 
+tag_repository.create(tag1)
+
 tags = [tag1, tag2]
 
 merchant1 = Merchant("Tesco", "groceries")
