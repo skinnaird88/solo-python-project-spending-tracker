@@ -24,10 +24,10 @@ merchant2 = Merchant("Shell", "motor")
 merchants = [merchant1, merchant2]
 
 transaction1 = Transaction("Chocolate", "groceries", 1, "Tesco")
-transaction2 = Transaction("Unleaded fuel", tag2, 50, merchant2)
+# transaction2 = Transaction("Unleaded fuel", tag2, 50, merchant2)
 
 transaction_repository.create(transaction1)
 
-transactions = [transaction1, transaction2]
+# transactions = [transaction1, transaction2]
 
 # pdb.set_trace()

@@ -14,8 +14,8 @@ def create(tag):
 def select_all():
     the_tags = []
     sql = "SELECT * from tags"
-    the_tags = run_sql(sql)
-    for row in the_tags:
+    rows = run_sql(sql)
+    for row in rows:
         tag = Merchant[row['name']]
         the_tags.append(tag)
     return the_tags

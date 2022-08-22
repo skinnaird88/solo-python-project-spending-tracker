@@ -1,4 +1,3 @@
-from cProfile import run
 from db.run_sql import run_sql
 
 from models.merchant import Merchant
@@ -16,8 +15,8 @@ def create(merchant):
 def select_all():
     the_merchants = []
     sql = "SELECT * from merchants"
-    the_merchants = run_sql(sql)
-    for row in the_merchants:
+    rows = run_sql(sql)
+    for row in rows:
         merchant = Merchant[row['name'], row['type'], row['id']]
         the_merchants.append(merchant)
     return the_merchants

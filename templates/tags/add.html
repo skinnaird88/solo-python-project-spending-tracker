@@ -3,7 +3,8 @@
 {% block content %} 
 <h2>Tags</h2>
 <h3>Add a tag</h3>
-<form>
+<form action="/tags" method="post">
     <input type="text" placeholder="Create a new tag">
+    <button type="submit">Add tag</button>
 </form>
 {% endblock %}

@@ -23,3 +23,8 @@ def show(id):
     merchant = merchant_repository.select(id)
     tags = merchant_repository.tags(merchant)
     return render_template("merchants/show.html", merchant=merchant, tags=tags)
+
+@merchants_blueprint.route("/merchants/add")
+def add_new_merchant():
+    new_merchant = merchant_repository.create
+    return render_template("merchants/add.html")
