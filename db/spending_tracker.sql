@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS transactions;
-DROP TABLE IF EXISTS tags;
 DROP TABLE IF EXISTS merchants;
+DROP TABLE IF EXISTS tags;
 
 CREATE TABLE transactions (
     id SERIAL PRIMARY KEY,
@@ -18,6 +18,5 @@ CREATE TABLE tags (
 CREATE TABLE merchants (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
-    type VARCHAR(255),
-    tag_id INT NOT NULL REFERENCES tags (id) ON DELETE CASCADE
+    tag_id INT REFERENCES tags (id) ON DELETE CASCADE
 );

@@ -1,5 +1,5 @@
 import unittest
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from console import *
 
@@ -14,8 +14,9 @@ import repositories.tag_repository as tag_repository
 merchants_blueprint = Blueprint("merchants", __name__)
 
 @merchants_blueprint.route("/merchants")
-def merchants():
-    merchants = merchant_repository.select_all() # NEW
+def my_merchants():
+    merchants = merchant_repository.select_all()
+    print ("HHHEEEEEEYYYYYYY", merchants)
     return render_template("merchants/index.html", merchants = merchants)
 
 @merchants_blueprint.route("/merchants/<id>")
@@ -24,7 +25,19 @@ def show(id):
     tags = merchant_repository.tags(merchant)
     return render_template("merchants/show.html", merchant=merchant, tags=tags)
 
-@merchants_blueprint.route("/merchants/add")
+# @merchants_blueprint.route("/merchants/add")
+# def add_new_merchant():
+#     new_merchant = merchant_repository.create
+#     return render_template("merchants/add.html")
+
+@merchants_blueprint.route("/merchants/add", methods=['GET'])
 def add_new_merchant():
-    new_merchant = merchant_repository.create
-    return render_template("merchants/add.html")
+    merchants = merchant_repository.select_all()
+    return render_template("merchants/add.html", merchants = merchants)
+
+@merchants_blueprint.route("/merchants", methods=['POST'])
+def create_new_merchant():
+    name = request.form['name']
+    merchant = Merchant(name)
+    merchant_repository.create(merchant)
+    return redirect('/merchants')

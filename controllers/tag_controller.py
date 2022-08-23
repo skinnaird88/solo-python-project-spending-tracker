@@ -26,11 +26,15 @@ def add_new_tag():
 
 @tags_blueprint.route("/tags", methods=['POST'])
 def create_new_tag():
-    tag_id = request.form['tag_id']
-    tag = tag_repository.select(tag_id) 
-    new_tag = Tag(tag)
-    tag_repository.save(new_tag)
-    return redirect("/tags")
+    category = request.form['category']
+    tag = Tag(category)
+    tag_repository.create(tag)
+    return redirect('/tags')
+
+    # new_tag = Tag(tag)
+    # tag = tag_repository.select_all() 
+    # tag_repository.create(new_tag)
+    # return redirect("/tags")
     # tag_name = request.form['tag_name']
     # tag = Tag(tag_name)
     # tag_repository.create(tag)

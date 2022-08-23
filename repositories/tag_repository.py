@@ -20,6 +20,10 @@ def select_all():
         the_tags.append(tag)
     return the_tags
 
+# def select(id):
+#     tag = None
+#     sql = "SELECT * FROM tags WHERE id = %s"
+#     values = 
 
 
 def delete_all():

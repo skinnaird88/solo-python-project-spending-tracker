@@ -8,9 +8,9 @@ import repositories.merchant_repository as merchant_repository
 import repositories.transaction_repository as transaction_repository
 import repositories.tag_repository as tag_repository
 
-# merchant_repository.delete_all()
+merchant_repository.delete_all()
 transaction_repository.delete_all()
-# tag_repository.delete_all()
+tag_repository.delete_all()
 
 tag1 = Tag("groceries")
 tag2 = Tag("motor")

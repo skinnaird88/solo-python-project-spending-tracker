@@ -7,5 +7,9 @@
 Add a tag
     </a>
 </p>
-
+{% for tag in the_tags %}
+<p>
+    {{tag.category}}
+</p>
+{% endfor %}
 {% endblock %}

@@ -5,7 +5,7 @@ from models.tag import Tag
 
 def create(merchant):
     sql = """
-    INSERT INTO merchants ( name, type ) VALUES ( %s, %s ) returning id
+    INSERT INTO merchants ( name ) VALUES ( %s ) returning id
     """
     values = [merchant.name]
     results = run_sql(sql, values)
@@ -17,7 +17,7 @@ def select_all():
     sql = "SELECT * from merchants"
     rows = run_sql(sql)
     for row in rows:
-        merchant = Merchant[row['name'], row['type'], row['id']]
+        merchant = Merchant(row['name'])
         the_merchants.append(merchant)
     return the_merchants
 

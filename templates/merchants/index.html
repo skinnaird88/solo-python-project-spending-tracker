@@ -7,4 +7,9 @@
 Add a merchant
     </a>
 </p>
+{% for merchant in the_merchants %}
+<p>
+    {{merchant.name}}
+</p>
+{% endfor %}
 {% endblock %}
