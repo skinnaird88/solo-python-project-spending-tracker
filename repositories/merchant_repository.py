@@ -1,4 +1,5 @@
 from db.run_sql import run_sql
+from models import merchant
 
 from models.merchant import Merchant
 
@@ -16,9 +17,19 @@ def select_all():
     sql = "SELECT * from merchants"
     rows = run_sql(sql)
     for row in rows:
-        merchant = Merchant(row['name'])
+        merchant = Merchant(row['name'], row['id'])
         the_merchants.append(merchant)
     return the_merchants
+
+def select(id):
+    merchant = None
+    sql = "SELECT * FROM merchants WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        merchant = Merchant(result['name'], result['id'])
+    return merchant
 
 def delete_all():
     sql = "DELETE FROM merchants"

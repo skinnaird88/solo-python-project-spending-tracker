@@ -7,8 +7,8 @@ from models.merchant import Merchant
 # from models.tag import Tag
 
 import repositories.transaction_repository as transaction_repository
-# import repositories.merchant_repository as merchant_repository
-# import repositories.tag_repository as tag_repository
+import repositories.merchant_repository as merchant_repository
+import repositories.tag_repository as tag_repository
 
 transactions_blueprint = Blueprint("transactions", __name__)
 
@@ -26,14 +26,18 @@ def transactions():
 @transactions_blueprint.route("/transactions/add", methods=['GET'])
 def add_new_transaction():
     transactions = transaction_repository.select_all()
-    return render_template("transactions/add.html", transactions = transactions)
+    tags = tag_repository.select_all()
+    merchants = merchant_repository.select_all()
+    return render_template("transactions/add.html", transactions = transactions, tags = tags, merchants = merchants)
 
 @transactions_blueprint.route("/transactions", methods=['POST'])
 def create_new_transaction():
     name = request.form['name']
-    type = request.form['type']
+    type_id = request.form['tag']
+    type = tag_repository.select(type_id)
     amount = request.form['amount']
-    merchant = request.form['merchant']
+    merchant_id = request.form['merchant']
+    merchant = merchant_repository.select(merchant_id)
     transaction = Transaction(name, type, amount, merchant)
     transaction_repository.create(transaction)
     return redirect('/transactions')

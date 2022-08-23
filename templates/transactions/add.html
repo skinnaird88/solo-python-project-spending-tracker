@@ -3,11 +3,25 @@
 {% block content %} 
 <h2>Transactions</h2>
 <h3>Add transaction</h3>
+
+
 <form action="/transactions" method="post">
     <input type="text" name='name' id='name'placeholder="Transaction name">
-    <input type="text" name='type' id='type'placeholder="Type">
+
+    <select name="tag" id='tag' placeholder="Tag">
+        {% for tag in tags %}
+        <option value="{{ tag.id }}">{{ tag.category }}</option>
+        {% endfor %}
+    </select> 
+
     <input type="number" name='amount' id='amount'placeholder="Amount">
-    <input type="text" name='merchant' id='merchant'placeholder="Merchant">
+
+    <select name="merchant" id="'merchant">
+        {% for merchant in merchants %}
+        <option value="{{ merchant.id}}">{{ merchant.name }}</option>
+        {% endfor %}
+    </select>
+
     <button type="submit">Add transaction</button>
 </form>
 {% endblock %}

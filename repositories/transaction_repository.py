@@ -11,8 +11,8 @@ def create(transaction):
     # transactions = []
 
     sql = """
-    INSERT INTO transactions ( name, type, amount, merchant ) VALUES ( %s, %s, %s, %s ) returning id"""
-    values = [transaction.name, transaction.type, transaction.amount, transaction.merchant]
+    INSERT INTO transactions ( name, tag_id, amount, merchant_id ) VALUES ( %s, %s, %s, %s ) returning *"""
+    values = [transaction.name, transaction.tag.id, transaction.amount, transaction.merchant.id]
     results = run_sql(sql, values)
     id = results[0]['id']
     transaction.id = id

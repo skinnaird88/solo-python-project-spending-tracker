@@ -18,14 +18,19 @@ def select_all():
     sql = "SELECT * from tags"
     rows = run_sql(sql)
     for row in rows:
-        tag = Tag(row['category'])
+        tag = Tag(row['category'], row['id'])
         the_tags.append(tag)
     return the_tags
 
-# def select(id):
-#     tag = None
-#     sql = "SELECT * FROM tags WHERE id = %s"
-#     values = 
+def select(id):
+    tag = None
+    sql = "SELECT * FROM tags WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        tag = Tag(result['category'], result['id'])
+    return tag
 
 
 def delete_all():
