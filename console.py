@@ -15,21 +15,21 @@ tag_repository.delete_all()
 tag1 = Tag("groceries")
 tag2 = Tag("motor")
 
-# tag_repository.create(tag1)
+tag_repository.create(tag1)
 
 tags = [tag1, tag2]
 
 merchant1 = Merchant("Tesco", "groceries")
 merchant2 = Merchant("Shell", "motor")
-# merchant_repository.create(merchant1)
+merchant_repository.create(merchant1)
 
 merchants = [merchant1, merchant2]
 
 transaction1 = Transaction("Chocolate", "groceries", 1, "Tesco")
-# transaction2 = Transaction("Unleaded fuel", tag2, 50, merchant2)
+transaction2 = Transaction("Unleaded fuel", tag2, 50, merchant2)
 
-# transaction_repository.create(transaction1)
+transaction_repository.create(transaction1)
 
-# transactions = [transaction1, transaction2]
+transactions = [transaction1, transaction2]
 
 # pdb.set_trace()
