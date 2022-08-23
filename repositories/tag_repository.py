@@ -20,6 +20,8 @@ def select_all():
         the_tags.append(tag)
     return the_tags
 
+
+
 def delete_all():
     sql = "DELETE FROM tags"
     run_sql(sql)

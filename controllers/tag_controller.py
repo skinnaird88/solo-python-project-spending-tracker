@@ -1,4 +1,5 @@
 from crypt import methods
+from unicodedata import category
 from db.run_sql import run_sql
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
@@ -18,10 +19,19 @@ def tags():
 
 # def other_add_new_tag (["GET"]) route:tags/add
 
-@tags_blueprint.route("/tags/add", methods=['POST'])
-def add_new_tag(tag):
-    
-    tag_name = request.form['tag_name']
-    tag = Tag(tag_name)
-    tag_repository.create(tag)
+@tags_blueprint.route("/tags/add", methods=['GET'])
+def add_new_tag():
+    tags = tag_repository.select_all()
+    return render_template("tags/add.html", tags = tags)
+
+@tags_blueprint.route("/tags", methods=['POST'])
+def create_new_tag():
+    tag_id = request.form['tag_id']
+    tag = tag_repository.select(tag_id) 
+    new_tag = Tag(tag)
+    tag_repository.save(new_tag)
     return redirect("/tags")
+    # tag_name = request.form['tag_name']
+    # tag = Tag(tag_name)
+    # tag_repository.create(tag)
+    # return redirect("/tags")
