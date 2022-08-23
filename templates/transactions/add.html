@@ -3,11 +3,11 @@
 {% block content %} 
 <h2>Transactions</h2>
 <h3>Add transaction</h3>
-<form>
-    <input type="text" placeholder="Transaction name">
-    <input type="text" placeholder="Type">
-    <input type="text" placeholder="Amount">
-    <input type="text" placeholder="Merchant">
+<form action="/transactions" method="post">
+    <input type="text" name='name' id='name'placeholder="Transaction name">
+    <input type="text" name='type' id='type'placeholder="Type">
+    <input type="number" name='amount' id='amount'placeholder="Amount">
+    <input type="text" name='merchant' id='merchant'placeholder="Merchant">
     <button type="submit">Add transaction</button>
 </form>
 {% endblock %}

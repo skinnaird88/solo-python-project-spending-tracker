@@ -28,7 +28,7 @@ def add_new_transaction():
     transactions = transaction_repository.select_all()
     return render_template("transactions/add.html", transactions = transactions)
 
-@transactions_blueprint.route("/tags", methods=['POST'])
+@transactions_blueprint.route("/transactions", methods=['POST'])
 def create_new_transaction():
     name = request.form['name']
     type = request.form['type']
