@@ -17,13 +17,13 @@ merchants_blueprint = Blueprint("merchants", __name__)
 def my_merchants():
     merchants = merchant_repository.select_all()
     print ("HHHEEEEEEYYYYYYY", merchants)
-    return render_template("merchants/index.html", merchants = merchants)
+    return render_template("merchants/index.html", the_merchants = merchants)
 
-@merchants_blueprint.route("/merchants/<id>")
-def show(id):
-    merchant = merchant_repository.select(id)
-    tags = merchant_repository.tags(merchant)
-    return render_template("merchants/show.html", merchant=merchant, tags=tags)
+# @merchants_blueprint.route("/merchants/<id>")
+# def show(id):
+#     merchant = merchant_repository.select(id)
+#     tags = merchant_repository.tags(merchant)
+#     return render_template("merchants/show.html", merchant=merchant, tags=tags)
 
 # @merchants_blueprint.route("/merchants/add")
 # def add_new_merchant():

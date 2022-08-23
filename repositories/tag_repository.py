@@ -1,15 +1,17 @@
 from db.run_sql import run_sql
 
 from models.tag import Tag
-from models.merchant import Merchant
-from models.transaction import Transaction
+# from models.merchant import Merchant
+# from models.transaction import Transaction
 
 def create(tag):
     sql = "INSERT INTO tags( category ) VALUES ( %s ) RETURNING id"
     values = [tag.category]
     results = run_sql( sql, values )
-    tag.id = results[0]['id']
-    return tag
+    id = results[0]['id']
+    tag.id = id
+
+
 
 def select_all():
     the_tags = []

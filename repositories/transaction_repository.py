@@ -11,12 +11,11 @@ def create(transaction):
     # transactions = []
 
     sql = """
-    INSERT INTO transactions ( name, type, amount, merchant ) VALUES ( %s, %s, %s, %s ) returning *"""
+    INSERT INTO transactions ( name, type, amount, merchant ) VALUES ( %s, %s, %s, %s ) returning id"""
     values = [transaction.name, transaction.type, transaction.amount, transaction.merchant]
-    # removed transaction.type, transaction.amount, transaction.merchant] ^^^^
     results = run_sql(sql, values)
-    transaction.id = results
-    return
+    id = results[0]['id']
+    transaction.id = id
 
 def select_all():
     list_of_transaction_instances = []
