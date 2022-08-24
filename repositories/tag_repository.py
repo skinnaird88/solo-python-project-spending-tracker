@@ -38,6 +38,6 @@ def delete_all():
     run_sql(sql)
 
 def update_tag(tag):
-    sql = "UPDATE tags SET (category) = (%s) WHERE id = %s"
-    values = [tag.category]
+    sql = "UPDATE tags SET category = %s WHERE id = %s"
+    values = [tag.category, tag.id]
     run_sql(sql, values)
