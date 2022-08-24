@@ -12,4 +12,8 @@ Add a new transaction
     <b>Item: </b>{{transaction.name}} <b>Type: </b>{{transaction.tag.category}} <b>Amount: £</b>{{transaction.amount}} <b>Merchant </b>{{transaction.merchant.name}}
 </p>
 {% endfor %}
+
+<p>Total</p>
+{{total}}
+
 {% endblock %}

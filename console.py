@@ -12,6 +12,8 @@ import repositories.tag_repository as tag_repository
 # transaction_repository.delete_all()
 # tag_repository.delete_all()
 
+print(transaction_repository.get_transaction_totals())
+
 tag1 = Tag("groceries")
 tag2 = Tag("motor")
 

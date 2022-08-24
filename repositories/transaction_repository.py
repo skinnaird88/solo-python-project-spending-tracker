@@ -35,6 +35,14 @@ def select_all():
         list_of_transaction_instances.append(transaction)
     return list_of_transaction_instances
 
+def get_transaction_totals():
+    total = 0
+    sql = "SELECT sum(amount) as total from transactions"
+    results = run_sql(sql)
+    if results is not None and results[0][0] is not None:
+        total = results[0]['total']
+    return total
+
 def delete_all():
     sql = "DELETE FROM transactions"
     run_sql(sql)
