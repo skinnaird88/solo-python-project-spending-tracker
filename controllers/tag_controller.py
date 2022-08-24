@@ -31,6 +31,18 @@ def create_new_tag():
     tag_repository.create(tag)
     return redirect('/tags')
 
+@tags_blueprint.route("/tags/<id>/edit", methods=['GET'])
+def edit_tag(id):
+    tag = tag_repository.select(id)
+    return render_template('tags/edit.html', tag = tag)
+
+@tags_blueprint.route("/tasks/<id>", methods=['POST'])
+def update_tag(id):
+    category = request.form['category']
+    tag = tag_repository.select(id)
+    updated_tag = Tag(tag, category)
+    tag_repository.update_tag(updated_tag)
+    return redirect('/tags')
 
 
     # new_tag = Tag(tag)
