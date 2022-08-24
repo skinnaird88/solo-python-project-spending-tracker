@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="/merchants/{{merchant.id}}" method="post">
+    <label for="name">Merchant name</label>
+    <input type="text" id="name" name="name" value="{{merchant.name}}">
+    <button type="submit">Update merchant</button>
+</form>
+
+{% endblock %}
