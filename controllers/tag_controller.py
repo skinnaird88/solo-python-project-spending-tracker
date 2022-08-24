@@ -31,6 +31,8 @@ def create_new_tag():
     tag_repository.create(tag)
     return redirect('/tags')
 
+
+
     # new_tag = Tag(tag)
     # tag = tag_repository.select_all() 
     # tag_repository.create(new_tag)

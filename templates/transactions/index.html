@@ -9,7 +9,7 @@ Add a new transaction
 </p>
 {% for transaction in the_transactions %}
 <p>
-    <b>Item: </b>{{transaction.name}} <b>Type: </b>{{transaction.type}} <b>Amount: £</b>{{transaction.amount}} <b>Merchant </b>{{transaction.merchant}}
+    <b>Item: </b>{{transaction.name}} <b>Type: </b>{{transaction.tag.category}} <b>Amount: £</b>{{transaction.amount}} <b>Merchant </b>{{transaction.merchant.name}}
 </p>
 {% endfor %}
 {% endblock %}

@@ -5,8 +5,8 @@ from models.transaction import Transaction
 # from models.tag import Tag
 # from models.merchant import Merchant
 
-# import repositories.merchant_repository as merchant_repository
-# import repositories.tag_repository as tag_repository
+import repositories.merchant_repository as merchant_repository
+import repositories.tag_repository as tag_repository
 
 def create(transaction):
     # transactions = []
@@ -28,7 +28,10 @@ def select_all():
     rows_of_transactions = run_sql(sql)
 
     for row in rows_of_transactions:
-        transaction = Transaction(row['name'], row['type'], row['amount'], row['merchant'], row['id'])
+        # row = {'name': 'Chocolate', 'tag_id': 1...}, 
+        tag = tag_repository.select(row['tag_id'])
+        merchant = merchant_repository.select(row['merchant_id'])
+        transaction = Transaction(row['name'], tag, row['amount'], merchant, row['id'])
         list_of_transaction_instances.append(transaction)
     return list_of_transaction_instances
 
