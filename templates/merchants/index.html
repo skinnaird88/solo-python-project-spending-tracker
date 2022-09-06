@@ -9,7 +9,7 @@ Add a merchant
 </p>
 {% for merchant in the_merchants %}
 <p>
-    {{merchant.name}}
+    {{merchant.name}} <a href="/merchants/{{merchant.id}}/edit">Edit</a>
 </p>
 {% endfor %}
 {% endblock %}

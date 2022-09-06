@@ -24,7 +24,8 @@ def create(transaction):
 
 def select_all():
     list_of_transaction_instances = []
-    sql = "SELECT * from transactions"
+    sql = """SELECT * from transactions 
+    ORDER BY amount"""
     rows_of_transactions = run_sql(sql)
 
     for row in rows_of_transactions:

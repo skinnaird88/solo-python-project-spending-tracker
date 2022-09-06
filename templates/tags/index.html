@@ -9,7 +9,7 @@ Add a tag
 </p>
 {% for tag in the_tags %}
 <p>
-    {{tag.category}}
+    {{tag.category}} <a href="/tags/{{tag.id}}/edit">Edit</a>
 </p>
 {% endfor %}
 {% endblock %}
